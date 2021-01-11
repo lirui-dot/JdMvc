@@ -85,7 +85,7 @@ namespace JdMvc.Controllers
             var ig = await _context.Images.FindAsync(id);
             if (ig == null)
             {
-                for (int i = 1; i < 16; i++)
+                for (int i = 1; i < 17; i++)
                 {
                     Image imagesss = new Image();
                     var path = Directory.GetCurrentDirectory();
@@ -139,7 +139,6 @@ namespace JdMvc.Controllers
 
         public async Task<ActionResult> Pictures(int? id)
         {
-
             var iii = _context.Images.Find(1);
             if (iii.FileUrl == null)
             {
@@ -163,7 +162,16 @@ namespace JdMvc.Controllers
             ViewData["Image"] = imgage;
 
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == id);
+            string fileUrl1 = Path.GetFileName(personal.Image);
+            var path1 = Directory.GetCurrentDirectory();
+            if (personal.Image != "" )
+            {
+                FileStream fs = new FileStream(path1 + @"\wwwroot\Image\" + fileUrl1, FileMode.Open, FileAccess.Read);
+                byte[] buffer = new byte[fs.Length];
+                fs.Read(buffer, 0, (int)fs.Length);
 
+                personal.FileUrl = "data:image/png;base64," + Convert.ToBase64String(buffer);
+            }
 
             return View(personal);
         }
@@ -193,6 +201,39 @@ namespace JdMvc.Controllers
             ViewData["Image"] = imgage;
 
             var ps = _context.Personals.Single(m => m.UserId == id);
+            if (personal.ImageUrl != null)
+            {
+                string phones = personal.ImageUrl.Replace("data:image/png;base64,", "");
+                byte[] bytes = Convert.FromBase64String(phones);
+                var path1 = Directory.GetCurrentDirectory();
+                string fileUrl1 = Guid.NewGuid().ToString() + ".png";
+                string url = path1 + @"\wwwroot\Image\" + fileUrl1;
+                System.IO.File.WriteAllBytes(url, bytes);
+                string urlPath = url.Replace(path1, "");
+                personal.Image = urlPath;
+                ps.Image = personal.Image;
+            }
+            if (personal.FileUrl != null)
+            {
+                string phones = personal.FileUrl.Replace("data:image/png;base64,", "");
+                byte[] bytes = Convert.FromBase64String(phones);
+                var path1 = Directory.GetCurrentDirectory();
+                string fileUrl1 = Guid.NewGuid().ToString() + ".png";
+                string url = path1 + @"\wwwroot\Image\" + fileUrl1;
+                System.IO.File.WriteAllBytes(url, bytes);
+                string urlPath = url.Replace(path1, "");
+                personal.Image = urlPath;
+                ps.Image = personal.Image;
+            }
+
+
+            if (ps != null)
+            {
+                _context.Update(ps);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Pictures", "Personal");
+            }
+
             return View(ps);
         }
         public async Task<ActionResult> Informations(int? id)

@@ -45,6 +45,8 @@ namespace JdMvc.Models
         public string Image { get; set; }
         [NotMapped]
         public string FileUrl{get;set;}
+        [NotMapped]
+        public string ImageUrl{get;set;}
 
         [Display(Name = "婚姻状况")]
         public string Marriage { get; set; }
