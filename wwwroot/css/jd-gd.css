@@ -1,0 +1,41 @@
+body{
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+   color: #666;
+   -webkit-font-smoothing: antialiased;
+   background: #fff;
+}
+#nav{
+    float: left;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+#main{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.model-main{
+    position: relative;
+}
+.gd-set{
+    background-color: #fff;
+    padding: 20px 5px 0 15px;
+    margin: 0;
+}
+.form-group{
+    display: block;
+    margin-bottom: 20px;
+    line-height: 30px;
+    margin: 0;
+    padding: 0;
+}
+.select-xz{
+    width: 100px;
+    line-height: 18px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    float: none;
+    font-family: "Microsoft YaHei";
+    font-size: 12px;
+}

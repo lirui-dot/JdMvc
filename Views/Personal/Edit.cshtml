@@ -1,0 +1,124 @@
+@model JdMvc.Models.Personal
+@using System.Collections;
+
+@{
+    ViewData["Title"] = "Edit";
+    var hobby1=ViewData["Hobby"] as List<Hobby>;
+}
+<body>
+<form asp-action="Edit">
+<div id="container">
+    <div id="content">
+        <div id="nav">
+            <div id="menu">
+                <dl>
+                    <dt>设置</dt>
+                    <dd><a href="#">个人信息</a></dd>
+                    <dd><a href="#">账号安全</a></dd>
+                    <dd><a href="#">我的尺码</a></dd>
+                    <dd><a href="#">账号绑定</a></dd>
+                    <dd><a href="#">收货地址</a></dd>
+                    <dd><a href="#">健康档案</a></dd>
+                    <dd><a href="#">分享绑定</a></dd>
+                    <dd><a href="#">邮件订阅</a></dd>
+                </dl>
+            </div>
+        </div>
+    
+    <div id="main">
+        <div class="model-main">
+            <div class="nav">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="jb"><a href="/Personal/Edit/@Model.UserId">基本信息</a></li>
+                     &nbsp;&nbsp;
+                    <li role="presentation"><a href="/Personal/Pictures/@Model.UserId">头像照片</a></li>
+                    &nbsp;&nbsp;
+                     <li role="presentation"><a href="/Personal/Informations/@Model.UserId" >更多个人信息</a></li>
+                </ul>
+            </div>
+            <div class="user-jiben">
+                <div class="form-group">
+                    <label asp-for="LoginName" class="control-label"></label>
+                    <input asp-for="LoginName" class="control-label" readonly="false" />
+                    <span asp-validation-for="LoginName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName"  class="control-label" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Name" class="control-label"></label>
+                    <input asp-for="Name" class="control-label" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Gender" class="control-label"></label>
+                    男<input asp-for="Gender" type="radio" value="男" class="control-label" />
+                    女<input asp-for="Gender" type="radio" value="女" class="control-label" />
+                    保密<input asp-for="Gender" type="radio" value="保密" class="control-label" />
+                    <span asp-validation-for="Gender" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <select class="BirthdayYear"  asp-for="BirthdayYear" asp-items="Model.BirthdayYearList">
+                        <option value="0">请选择：</option>
+                    </select>
+                    <label asp-for="BirthdayYear" class="control-label" ></label>
+                    
+                    <select class="BirthdayMonth" asp-for="BirthdayMonth" asp-items="Model.BirthdayMonthList">
+                        <option value="0">请选择：</option>
+                    </select>
+                    <label asp-for="BirthdayMonth" class="control-label"></label>
+                    
+                    <select class="BirthdayDay" asp-for="BirthdayDay" asp-items="Model.BirthdayDayList">
+                        <option value="0">请选择：</option>
+                    </select>
+                    <label asp-for="BirthdayDay" class="control-label"></label>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" asp-for="HobbyClassification" value="@Model.HobbyClassification" />
+                </div>
+                <div class="form-group">
+                    <span class="label">兴趣爱好：</span>
+                    <div class="hobby-model">
+                        <p class="ppp">请选择您的兴趣爱好的分类，给您最精准的推荐</p>
+                        <ul class="hobby">
+                            @foreach (var item in hobby1)
+                            {
+                                if(ViewBag.Hy!=null){
+                                    var hy=Array.IndexOf(ViewBag.Hy,item.Id);
+                                    if (hy!=-1)
+                                    {
+                                        <li class="selected-li" id="li"  value="@item.Id">@item.HobbyClassification</li>
+                                    }else{
+                                        <li class="i-li" id="li"  value="@item.Id">@item.HobbyClassification</li>
+                                    }
+                                }
+                                if (ViewBag.Hy==null)
+                                {
+                                    <li class="i-li" id="li"  value="@item.Id">@item.HobbyClassification</li>
+                                }
+                                
+                                
+                                
+                            }
+                        </ul>
+                    </div>
+                </div>
+               <div class="form-group">
+                   <button type="submit" id="Edit" class="btn btn-default">提交</button>
+               </div>
+            </div>
+        </div>
+    </div>
+   </div>
+</div>
+
+</form>
+
+@section Scripts {
+    <link rel="stylesheet" href="../../css/jd.css">
+    <script src="../../js/Edit.js"></script>
+    <script src="../../js/hobby.js"></script>
+} 
+</body>

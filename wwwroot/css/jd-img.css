@@ -1,0 +1,86 @@
+body{
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+   color: #666;
+   -webkit-font-smoothing: antialiased;
+   background: #fff;
+}
+#nav{
+    float: left;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+#main{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+.model-main{
+    position: relative;
+}
+#Image{
+    position: relative;
+    top: 10px;
+}
+.img-tj li{
+    float: left;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin: 10px 10px 0 0;
+    cursor: pointer;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+.img-tj{
+    margin: 0;
+    padding: 0;
+}
+.img-tj ul{
+    display: block;
+    width: 480px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.img-da{
+    position: relative;
+    width: 470px;
+    height: 236px;
+    margin-bottom: 20px;
+    display: table;
+    text-align: center;
+    background: #f9f9f9;
+    border: 1px solid #e9eaec;
+    margin: 0;
+    padding: 0;
+}
+.img-xiao{
+    display: table-cell;
+    vertical-align: middle;
+    position: relative;
+    z-index: 5;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+.img-button{
+    width: 202px;
+    height: 34px;
+}
+.img-button p{
+    color: #999;
+    margin: 0;
+    padding: 0;
+}
+.btn-btn{
+    margin-top: 20px;
+    margin: 0;
+    padding: 0;
+}
+.btn-btn button{
+    border: 1px solid #080808;
+}
+
+

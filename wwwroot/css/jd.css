@@ -1,0 +1,66 @@
+body{
+    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+   color: #666;
+   -webkit-font-smoothing: antialiased;
+   background: #fff;
+}
+#nav{
+    float: left;
+    width: 80px;
+    margin: 0;
+    padding: 0;
+}
+#main{
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+
+#LoginName{
+   border: 0;  
+   outline: none; 
+   background-color: rgba(0, 0, 0, 0);
+}
+.model-main{
+    position: relative;
+}
+.hobby-model{
+    width: 400px;
+    margin: 0;
+    padding: 0;
+}
+.selected-li{
+    border: 1px solid #da3e3e;
+    list-style: none;
+    float: left;
+    margin: 10px 10px 0 0;
+    height: 33px;
+    line-height: 18px;
+    padding: 8px 9px;
+    margin: 10px 10px 0 0;
+    
+}
+.hobby-model .i-li{
+    list-style: none;
+    float: left;
+    margin: 10px 10px 0 0;
+    height: 33px;
+    line-height: 18px;
+    border: 1px solid #cfcfcf;
+    padding: 8px 9px;
+    margin: 10px 10px 0 0;
+}
+#Edit{
+    position: relative;
+    top: 230px;
+    right: 300px;
+}
+.label{
+    position: relative;
+    top: 18px;
+    right: 20px;
+}
+.ppp{
+    position: relative;
+    left: 40px;
+}
