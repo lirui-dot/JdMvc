@@ -1,4 +1,4 @@
-@model JdMvc.Models.Personal
+@model JdMvc.Models.InheritingPage
 
 @{
     ViewData["Title"] = "Informations";
@@ -27,11 +27,11 @@
         <div class="model-main">
             <div class="nav">
                 <ul class="nav nav-tabs" role="tablist">
-                   <li role="presentation" class="jb"><a href="/Personal/Edit/@Model.UserId">基本信息</a></li>
+                    <li role="presentation" class="jb"><a href="/Personal/Edit">基本信息</a></li>
                      &nbsp;&nbsp;
-                    <li role="presentation"><a href="/Personal/Pictures/@Model.UserId">头像照片</a></li>
+                    <li role="presentation"><a href="/Personal/Pictures">头像照片</a></li>
                     &nbsp;&nbsp;
-                     <li role="presentation"><a href="/Personal/Informations/@Model.UserId" >更多个人信息</a></li>
+                     <li role="presentation"><a href="/Personal/Informations" >更多个人信息</a></li>
                 </ul>
             </div>
             <div class="gd">

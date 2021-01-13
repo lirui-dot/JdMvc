@@ -60,9 +60,6 @@ namespace JdMvc.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    LoginName = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Gender = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     BirthdayYear = table.Column<int>(type: "int", nullable: false),
                     BirthdayMonth = table.Column<int>(type: "int", nullable: false),
@@ -71,7 +68,7 @@ namespace JdMvc.Migrations
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Marriage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Income = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    IdCard = table.Column<string>(type: "nvarchar(18)", maxLength: 18, nullable: true),
                     Education = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Industry = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },

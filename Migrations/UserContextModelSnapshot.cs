@@ -113,7 +113,8 @@ namespace JdMvc.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("IdCard")
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(18)
+                        .HasColumnType("nvarchar(18)");
 
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
@@ -124,21 +125,11 @@ namespace JdMvc.Migrations
                     b.Property<string>("Industry")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("LoginName")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Marriage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
-
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

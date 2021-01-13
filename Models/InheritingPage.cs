@@ -3,14 +3,22 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace JdMvc.Models
-{
-    public class Personal
-    {
-        public int Id { get; set; }
-        [Display(Name = "用户Id")]
-        public int UserId { get; set; }
-
+namespace JdMvc.Models{
+    public class InheritingPage{
+        public int Id{get;set;}
+        [Display(Name = "用户名")]
+        [Required(ErrorMessage = "请输入{0}")]
+        public string UserName { get; set; }
+        [Display(Name = "登录名")]
+        public string LoginName { get; set; }
+        [Display(Name = "昵称")]
+        public string Name { get; set; }
+        [Display(Name = "密码")]
+        [Required(ErrorMessage = "请输入{0}")]
+        public string PassWord { get; set; }
+        
+        [Required(ErrorMessage = "请再次输入密码")]
+        public string CpassWord { get; set; }
         [Display(Name = "性别")]
         public string Gender { get; set; }
 
@@ -53,6 +61,5 @@ namespace JdMvc.Models
 
         [Display(Name = "所在行业")]
         public string Industry { get; set; }
-
     }
 }
