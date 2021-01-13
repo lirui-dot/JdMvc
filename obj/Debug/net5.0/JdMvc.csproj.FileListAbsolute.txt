@@ -153,7 +153,6 @@ D:\new vs code\JdMvc\obj\Debug\net5.0\JdMvc.RazorCoreGenerate.cache
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Edit.cshtml.g.cs
-D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Index.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -172,3 +171,4 @@ D:\new vs code\JdMvc\obj\Debug\net5.0\JdMvc.genruntimeconfig.cache
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Pictures.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Informations.cshtml.g.cs
 D:\new vs code\JdMvc\bin\Debug\net5.0\jsconfig.json
+D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Address\Address.cshtml.g.cs

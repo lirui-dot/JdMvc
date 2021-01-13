@@ -15603,11 +15603,6 @@
   "RootNamespace": "JdMvc",
   "Documents": [
     {
-      "FilePath": "d:\\new vs code\\JdMvc\\Views\\Personal\\Index.cshtml",
-      "TargetPath": "Views\\Personal\\Index.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "d:\\new vs code\\JdMvc\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
       "FileKind": "mvc"
@@ -15625,6 +15620,11 @@
     {
       "FilePath": "d:\\new vs code\\JdMvc\\Views\\Personal\\Pictures.cshtml",
       "TargetPath": "Views\\Personal\\Pictures.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "d:\\new vs code\\JdMvc\\Views\\Address\\Address.cshtml",
+      "TargetPath": "Views\\Address\\Address.cshtml",
       "FileKind": "mvc"
     },
     {

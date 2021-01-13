@@ -7,6 +7,26 @@ namespace JdMvc.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "addredds",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    Consignee = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Area = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    FixedPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AddressAlias = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_addredds", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Hobbies",
                 columns: table => new
                 {
@@ -51,7 +71,7 @@ namespace JdMvc.Migrations
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Marriage = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Income = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    IdCard = table.Column<int>(type: "int", nullable: false),
+                    IdCard = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Education = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Industry = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
@@ -97,6 +117,9 @@ namespace JdMvc.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "addredds");
+
             migrationBuilder.DropTable(
                 name: "Hobbies");
 

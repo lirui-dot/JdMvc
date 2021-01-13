@@ -82,23 +82,6 @@ namespace JdMvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, Personal personal)
         {
-            var ig = await _context.Images.FindAsync(id);
-            if (ig == null)
-            {
-                for (int i = 1; i < 17; i++)
-                {
-                    Image imagesss = new Image();
-                    var path = Directory.GetCurrentDirectory();
-                    string url = path + @"\wwwroot\Image\" + i + ".jpg";
-                    string urlPath = url.Replace(path, "");
-                    imagesss.Img = urlPath;
-                    _context.Images.Add(imagesss);
-                    await _context.SaveChangesAsync();
-                }
-            }
-
-
-
 
             var hobby = _context.Hobbies.ToList();
             ViewData["Hobby"] = hobby;
@@ -139,6 +122,22 @@ namespace JdMvc.Controllers
 
         public async Task<ActionResult> Pictures(int? id)
         {
+
+            var ig = await _context.Images.FindAsync(id);
+            if (ig == null)
+            {
+                for (int i = 1; i < 17; i++)
+                {
+                    Image imagesss = new Image();
+                    var path = Directory.GetCurrentDirectory();
+                    string url = path + @"\wwwroot\Image\" + i + ".jpg";
+                    string urlPath = url.Replace(path, "");
+                    imagesss.Img = urlPath;
+                    _context.Images.Add(imagesss);
+                    await _context.SaveChangesAsync();
+                }
+            }
+
             var iii = _context.Images.Find(1);
             if (iii.FileUrl == null)
             {
@@ -164,7 +163,7 @@ namespace JdMvc.Controllers
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == id);
             string fileUrl1 = Path.GetFileName(personal.Image);
             var path1 = Directory.GetCurrentDirectory();
-            if (personal.Image != "" )
+            if (personal.Image != "" && personal.Image != null)
             {
                 FileStream fs = new FileStream(path1 + @"\wwwroot\Image\" + fileUrl1, FileMode.Open, FileAccess.Read);
                 byte[] buffer = new byte[fs.Length];
@@ -238,7 +237,7 @@ namespace JdMvc.Controllers
         }
         public async Task<ActionResult> Informations(int? id)
         {
-            var ps = _context.Personals.Single(m => m.UserId == id);
+            var ps = _context.Personals.SingleOrDefault(m => m.UserId == id);
             return View(ps);
         }
         [HttpPost]
