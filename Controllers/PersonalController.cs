@@ -287,5 +287,17 @@ namespace JdMvc.Controllers
             return View();
         }
 
+
+
+        public async Task<ActionResult> Address()
+        {
+            return View();
+
+        }
+        [HttpPost]
+        public async Task<ActionResult> Address(InheritingPage page)
+        {
+            return View(page);
+        }
     }
 }

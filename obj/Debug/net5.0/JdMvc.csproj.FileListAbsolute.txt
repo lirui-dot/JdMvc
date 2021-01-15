@@ -171,4 +171,4 @@ D:\new vs code\JdMvc\obj\Debug\net5.0\JdMvc.genruntimeconfig.cache
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Pictures.cshtml.g.cs
 D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Informations.cshtml.g.cs
 D:\new vs code\JdMvc\bin\Debug\net5.0\jsconfig.json
-D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Address\Address.cshtml.g.cs
+D:\new vs code\JdMvc\obj\Debug\net5.0\Razor\Views\Personal\Address.cshtml.g.cs

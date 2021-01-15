@@ -15623,13 +15623,13 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\new vs code\\JdMvc\\Views\\Address\\Address.cshtml",
-      "TargetPath": "Views\\Address\\Address.cshtml",
+      "FilePath": "d:\\new vs code\\JdMvc\\Views\\_ViewImports.cshtml",
+      "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "d:\\new vs code\\JdMvc\\Views\\_ViewImports.cshtml",
-      "TargetPath": "Views\\_ViewImports.cshtml",
+      "FilePath": "d:\\new vs code\\JdMvc\\Views\\Personal\\Address.cshtml",
+      "TargetPath": "Views\\Personal\\Address.cshtml",
       "FileKind": "mvc"
     },
     {

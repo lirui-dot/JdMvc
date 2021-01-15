@@ -8,7 +8,7 @@ body{
     float: left;
     width: 80px;
     margin: 0;
-    padding: 0;
+    padding: 0; 
 }
 #main{
     float: left;

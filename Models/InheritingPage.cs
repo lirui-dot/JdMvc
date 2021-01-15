@@ -3,9 +3,11 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace JdMvc.Models{
-    public class InheritingPage{
-        public int Id{get;set;}
+namespace JdMvc.Models
+{
+    public class InheritingPage
+    {
+        public int Id { get; set; }
         [Display(Name = "用户名")]
         [Required(ErrorMessage = "请输入{0}")]
         public string UserName { get; set; }
@@ -16,7 +18,7 @@ namespace JdMvc.Models{
         [Display(Name = "密码")]
         [Required(ErrorMessage = "请输入{0}")]
         public string PassWord { get; set; }
-        
+
         [Required(ErrorMessage = "请再次输入密码")]
         public string CpassWord { get; set; }
         [Display(Name = "性别")]
@@ -61,5 +63,23 @@ namespace JdMvc.Models{
 
         [Display(Name = "所在行业")]
         public string Industry { get; set; }
+        [Required(ErrorMessage = "请输入收货人名称")]
+        [Display(Name = "*收货人")]
+        public string Consignee { get; set; }
+        [Required(ErrorMessage = "所在地区不能为空")]
+        [Display(Name = "*所在地区")]
+        public string Area { get; set; }
+        [Required(ErrorMessage = "地址不能为空")]
+        [Display(Name = "*地址")]
+        public string Address { get; set; }
+        [Required(ErrorMessage = "手机号码不能为空")]
+        [Display(Name = "*手机")]
+        public string Phone { get; set; }
+        [Display(Name = "固定电话")]
+        public string FixedPhone { get; set; }
+        [Display(Name = "电子邮箱")]
+        public string EmailAddress { get; set; }
+        [Display(Name = "地址别名")]
+        public string AddressAlias { get; set; }
     }
 }

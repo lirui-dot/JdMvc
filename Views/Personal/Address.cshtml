@@ -1,0 +1,86 @@
+@model JdMvc.Models.InheritingPage
+
+<body>
+<form asp-action="Address">
+<div id="container">
+    <div id="content">
+        <div id="nav">
+            <div id="menu">
+                <dl>
+                    <dt>设置</dt>
+                    <dd><a href="/Personal/Edit">个人信息</a></dd>
+                    <dd><a href="#">账号安全</a></dd>
+                    <dd><a href="#">我的尺码</a></dd>
+                    <dd><a href="#">账号绑定</a></dd>
+                    <dd><a href="#">收货地址</a></dd>
+                    <dd><a href="#">健康档案</a></dd>
+                    <dd><a href="#">分享绑定</a></dd>
+                    <dd><a href="#">邮件订阅</a></dd>
+                </dl>
+            </div>
+        </div>
+        <div id="main">
+            <div class="tou">
+                <button type="button" id="add-btn" data-toggle="modal"  data-target="#modal-form">
+                    新增收货地址
+                    </button>
+            </div>
+        </div>
+    </div>
+<div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">添加收获地址</h5>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+                <label asp-for="Consignee" class="control-label"></label>
+                <input asp-for="Consignee" class="control-label"  />
+                <span asp-validation-for="Consignee" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="Consignee" class="control-label"></label>
+                <input asp-for="Consignee" class="control-label"  />
+                <span asp-validation-for="Consignee" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="control-label"  />
+                <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input asp-for="Phone" class="control-label"  />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="FixedPhone" class="control-label"></label>
+                <input asp-for="FixedPhone" class="control-label"  />
+                <span asp-validation-for="FixedPhone" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input asp-for="EmailAddress" class="control-label"  />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+                <label asp-for="AddressAlias" class="control-label"></label>
+                <input asp-for="AddressAlias" class="control-label"  />
+                <span asp-validation-for="AddressAlias" class="text-danger"></span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Understood</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</form>
+</body>
+
+@section Scripts {
+    <link rel="stylesheet" href="../../css/address.css">
+} 
