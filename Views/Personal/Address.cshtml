@@ -40,9 +40,7 @@
                 <span asp-validation-for="Consignee" class="text-danger"></span>
         </div>
         <div class="form-group">
-                <label asp-for="Consignee" class="control-label"></label>
-                <input asp-for="Consignee" class="control-label"  />
-                <span asp-validation-for="Consignee" class="text-danger"></span>
+                <label asp-for="Area" class="control-label"></label>
         </div>
         <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
@@ -83,4 +81,5 @@
 
 @section Scripts {
     <link rel="stylesheet" href="../../css/address.css">
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 } 
