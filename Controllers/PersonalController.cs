@@ -29,7 +29,13 @@ namespace JdMvc.Controllers
             InheritingPage page = new InheritingPage();
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
             var user = _context.Users.Find(userid);
-
+            if (personal==null)
+            {  
+                Personal p=new Personal();
+                p.UserId=user.Id;
+                _context.Personals.Add(p);
+                await _context.SaveChangesAsync(); 
+            }
             if (user != null)
             {
                 page.LoginName = user.LoginName;
@@ -108,9 +114,6 @@ namespace JdMvc.Controllers
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
 
             var user = _context.Users.Find(userid);
-            var hobby = _context.Hobbies.ToList();
-            ViewData["Hobby"] = hobby;
-
             if (user != null)
             {
                 user.UserName = page.UserName;
@@ -149,7 +152,9 @@ namespace JdMvc.Controllers
                 await _context.SaveChangesAsync();
             }
 
-
+            var hobby = _context.Hobbies.ToList();
+            ViewData["Hobby"] = hobby;
+            
             if (personal != null)
             {
                 return RedirectToAction("Edit", "Personal");
@@ -198,10 +203,8 @@ namespace JdMvc.Controllers
             }
             var imgage = _context.Images.ToList();
             ViewData["Image"] = imgage;
-
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
-            if (personal != null)
-            {
+            
                 if (personal.Image != "" && personal.Image != null)
                 {
                     string fileUrl1 = Path.GetFileName(personal.Image);
@@ -213,14 +216,11 @@ namespace JdMvc.Controllers
                     personal.FileUrl = "data:image/png;base64," + Convert.ToBase64String(buffer);
 
                 }
-            }
-            if (personal != null)
-            {
                 InheritingPage inheritingPage = new InheritingPage();
                 inheritingPage.FileUrl = personal.FileUrl;
-            }
+            
 
-            return View();
+            return View(inheritingPage);
         }
         [HttpPost]
         public async Task<ActionResult> Pictures(InheritingPage page)
