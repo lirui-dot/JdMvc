@@ -7,7 +7,7 @@ namespace JdMvc.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "addredds",
+                name: "Addresses",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +23,7 @@ namespace JdMvc.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_addredds", x => x.Id);
+                    table.PrimaryKey("PK_Addresses", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -81,8 +81,7 @@ namespace JdMvc.Migrations
                 name: "Provinces",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    id = table.Column<int>(type: "int", nullable: false),
                     name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     parentid = table.Column<int>(type: "int", nullable: false),
                     parentname = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -115,7 +114,7 @@ namespace JdMvc.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "addredds");
+                name: "Addresses");
 
             migrationBuilder.DropTable(
                 name: "Hobbies");

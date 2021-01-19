@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JdMvc.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20210118042910_InitialCreate")]
+    [Migration("20210119080557_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -53,7 +53,7 @@ namespace JdMvc.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("addredds");
+                    b.ToTable("Addresses");
                 });
 
             modelBuilder.Entity("JdMvc.Models.Hobby", b =>
@@ -141,9 +141,7 @@ namespace JdMvc.Migrations
             modelBuilder.Entity("JdMvc.Models.Province", b =>
                 {
                     b.Property<int>("id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
+                        .HasColumnType("int");
 
                     b.Property<string>("areacode")
                         .HasColumnType("nvarchar(max)");

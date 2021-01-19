@@ -11,6 +11,6 @@ namespace JdMvc.Models{
         public DbSet<Personal> Personals{get;set;}
         public DbSet<Hobby> Hobbies{get;set;}
         public DbSet<Image> Images{get;set;}
-        public DbSet<Address> addredds{get;set;}
+        public DbSet<Address> Addresses{get;set;}
     }
 }

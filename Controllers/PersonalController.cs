@@ -200,19 +200,27 @@ namespace JdMvc.Controllers
             ViewData["Image"] = imgage;
 
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
-            string fileUrl1 = Path.GetFileName(personal.Image);
-            var path1 = Directory.GetCurrentDirectory();
-            if (personal.Image != "" && personal.Image != null)
+            if (personal != null)
             {
-                FileStream fs = new FileStream(path1 + @"\wwwroot\Image\" + fileUrl1, FileMode.Open, FileAccess.Read);
-                byte[] buffer = new byte[fs.Length];
-                fs.Read(buffer, 0, (int)fs.Length);
+                if (personal.Image != "" && personal.Image != null)
+                {
+                    string fileUrl1 = Path.GetFileName(personal.Image);
+                    var path1 = Directory.GetCurrentDirectory();
+                    FileStream fs = new FileStream(path1 + @"\wwwroot\Image\" + fileUrl1, FileMode.Open, FileAccess.Read);
+                    byte[] buffer = new byte[fs.Length];
+                    fs.Read(buffer, 0, (int)fs.Length);
 
-                personal.FileUrl = "data:image/png;base64," + Convert.ToBase64String(buffer);
+                    personal.FileUrl = "data:image/png;base64," + Convert.ToBase64String(buffer);
+
+                }
             }
-            InheritingPage inheritingPage = new InheritingPage();
-            inheritingPage.FileUrl = personal.FileUrl;
-            return View(inheritingPage);
+            if (personal != null)
+            {
+                InheritingPage inheritingPage = new InheritingPage();
+                inheritingPage.FileUrl = personal.FileUrl;
+            }
+
+            return View();
         }
         [HttpPost]
         public async Task<ActionResult> Pictures(InheritingPage page)
@@ -303,9 +311,9 @@ namespace JdMvc.Controllers
 
             }
             ViewBag.Data = JsonConvert.SerializeObject(dbProvince);
-            var address = _context.addredds.Where(m => m.UserId == userid).ToList();
+            var address = _context.Addresses.Where(m => m.UserId == userid).ToList();
             ViewBag.Number = address.Count;
-            ViewBag.Body=address;
+            ViewBag.Body = address;
 
             return View();
 
@@ -326,7 +334,7 @@ namespace JdMvc.Controllers
             address.AddressAlias = page.AddressAlias;
             if (address != null)
             {
-                _context.addredds.Add(address);
+                _context.Addresses.Add(address);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Address", "Personal");
             }

@@ -6,6 +6,7 @@ namespace JdMvc.Models
 {
     public class Province
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [JsonProperty(PropertyName = "code")]
         public int id { get; set; }
         public string name { get; set; }
