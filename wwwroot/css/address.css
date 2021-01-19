@@ -28,7 +28,13 @@ body{
     background-color: #f5fbef;
     border: 1px solid #bfd6af;
 }
-#neirong{
+.neirong{
+    position: relative;
+    right: 740px;
+    bottom: 170px;
+    display: none;
+}
+.label-xuan{
     position: relative;
     right: 740px;
     bottom: 170px;

@@ -290,9 +290,10 @@ namespace JdMvc.Controllers
 
         public async Task<ActionResult> Address()
         {
+            var userid = HttpContext.Session.GetInt32("UserId");
+
 
             var dbProvince = await _context.Provinces.Where(m => m.id < 35).ToListAsync();
-
             for (int i = 0; i < dbProvince.Count; i++)
             {
                 var dbCity = await _context.Provinces.Where(m => m.parentid == dbProvince[i].id).ToListAsync();
@@ -302,6 +303,9 @@ namespace JdMvc.Controllers
 
             }
             ViewBag.Data = JsonConvert.SerializeObject(dbProvince);
+            var address = _context.addredds.Where(m => m.UserId == userid).ToList();
+            ViewBag.Number = address.Count;
+            ViewBag.Body=address;
 
             return View();
 
@@ -310,12 +314,12 @@ namespace JdMvc.Controllers
         public async Task<ActionResult> Address(InheritingPage page)
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var user = _context.Users.Find(userid);
+            var user = _context.Users.Find(1);
             Address address = new Address();
             address.UserId = user.Id;
             address.Consignee = page.Consignee;
             address.Area = page.Area;
-            address.DetailedAddress = page.Address;
+            address.DetailedAddress = page.DetailedAddress;
             address.Phone = page.Phone;
             address.FixedPhone = page.FixedPhone;
             address.EmailAddress = page.EmailAddress;
@@ -324,6 +328,7 @@ namespace JdMvc.Controllers
             {
                 _context.addredds.Add(address);
                 await _context.SaveChangesAsync();
+                return RedirectToAction("Address", "Personal");
             }
             return View(page);
         }

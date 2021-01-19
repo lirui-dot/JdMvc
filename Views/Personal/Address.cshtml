@@ -21,9 +21,53 @@
         </div>
         <div id="main">
             <div class="tou">
-                <button type="button" id="add-btn" data-toggle="modal"  data-target="#modal-form">
-                    新增收货地址
-                    </button>
+                <button type="button" id="add-btn" data-toggle="modal"  data-target="#modal-form">新增收货地址</button>
+                <span>您已经创建
+                    <span>@ViewBag.Number</span>
+                    个收获地址,最多可以创建
+                    <span>25</span>
+                    个
+                </span>
+            </div>
+            <div class="zhong">
+                <div class="da">
+                    <div>
+                        @foreach (var item in @ViewBag.Body)
+                        {
+                            <div>
+                                <h3>@item.Consignee</h3>
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="form-group">
+                                        <span>收货人：</span>
+                                        <input value="@item.Consignee" readonly="false" />
+                                    </div>
+                                    <div class="form-group">
+                                        <span>所在地区：</span>
+                                        <input value="@item.Area" readonly="false" />
+                                    </div>
+                                    <div class="form-group">
+                                        <span>地址：</span>
+                                        <input value="@item.DetailedAddress" readonly="false" />
+                                    </div>
+                                    <div class="form-group">
+                                        <span>手机：</span>
+                                        <input value="@item.Phone" readonly="false" />
+                                    </div>
+                                    <div class="form-group">
+                                        <span>固定电话：</span>
+                                        <input value="@item.FixedPhone" readonly="false" />
+                                    </div>
+                                    <div class="form-group">
+                                        <span>电子邮箱：</span>
+                                        <input value="@item.EmailAddress" readonly="false" />
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -44,12 +88,12 @@
                <span id="test" style="cursor:pointer;">选择地址</span>
                <input asp-for="Area" type="hidden" />
                <div class="triangle"></div>
-               <div id="neirong"></div>
+               <div class="neirong" id="nei"></div>
         </div>
         <div class="form-group">
-                <label asp-for="Address" class="control-label"></label>
-                <input asp-for="Address" class="control-label"  />
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <label asp-for="DetailedAddress" class="control-label"></label>
+                <input asp-for="DetailedAddress" class="control-label"  />
+                <span asp-validation-for="DetailedAddress" class="text-danger"></span>
         </div>
         <div class="form-group">
                 <label asp-for="Phone" class="control-label"></label>
