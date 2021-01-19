@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JdMvc.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20210119080557_InitialCreate")]
+    [Migration("20210119083637_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

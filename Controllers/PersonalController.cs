@@ -154,7 +154,7 @@ namespace JdMvc.Controllers
 
             var hobby = _context.Hobbies.ToList();
             ViewData["Hobby"] = hobby;
-            
+
             if (personal != null)
             {
                 return RedirectToAction("Edit", "Personal");
@@ -299,22 +299,16 @@ namespace JdMvc.Controllers
         public async Task<ActionResult> Address()
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-
-
             var dbProvince = await _context.Provinces.Where(m => m.id < 35).ToListAsync();
             for (int i = 0; i < dbProvince.Count; i++)
             {
                 var dbCity = await _context.Provinces.Where(m => m.parentid == dbProvince[i].id).ToListAsync();
-
-
                 dbProvince[i].children = dbCity;
-
             }
             ViewBag.Data = JsonConvert.SerializeObject(dbProvince);
             var address = _context.Addresses.Where(m => m.UserId == userid).ToList();
             ViewBag.Number = address.Count;
             ViewBag.Body = address;
-
             return View();
 
         }
