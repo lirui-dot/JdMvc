@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace JdMvc.Controllers
 {
@@ -287,16 +288,43 @@ namespace JdMvc.Controllers
             return View();
         }
 
-
-
         public async Task<ActionResult> Address()
         {
+
+            var dbProvince = await _context.Provinces.Where(m => m.id < 35).ToListAsync();
+
+            for (int i = 0; i < dbProvince.Count; i++)
+            {
+                var dbCity = await _context.Provinces.Where(m => m.parentid == dbProvince[i].id).ToListAsync();
+
+
+                dbProvince[i].children = dbCity;
+
+            }
+            ViewBag.Data = JsonConvert.SerializeObject(dbProvince);
+
             return View();
 
         }
         [HttpPost]
         public async Task<ActionResult> Address(InheritingPage page)
         {
+            var userid = HttpContext.Session.GetInt32("UserId");
+            var user = _context.Users.Find(userid);
+            Address address = new Address();
+            address.UserId = user.Id;
+            address.Consignee = page.Consignee;
+            address.Area = page.Area;
+            address.DetailedAddress = page.Address;
+            address.Phone = page.Phone;
+            address.FixedPhone = page.FixedPhone;
+            address.EmailAddress = page.EmailAddress;
+            address.AddressAlias = page.AddressAlias;
+            if (address != null)
+            {
+                _context.addredds.Add(address);
+                await _context.SaveChangesAsync();
+            }
             return View(page);
         }
     }

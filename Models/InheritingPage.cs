@@ -70,13 +70,16 @@ namespace JdMvc.Models
         [Display(Name = "*所在地区")]
         public string Area { get; set; }
         [Required(ErrorMessage = "地址不能为空")]
-        [Display(Name = "*地址")]
+        [Display(Name = "*详细地址")]
         public string Address { get; set; }
         [Required(ErrorMessage = "手机号码不能为空")]
         [Display(Name = "*手机")]
+        [RegularExpression(@"^1[3458][0-9]{9}$", ErrorMessage = "手机号格式不正确")]
         public string Phone { get; set; }
+        [RegularExpression(@"^1[3458][0-9]{9}$", ErrorMessage = "固定电话格式不正确")]
         [Display(Name = "固定电话")]
         public string FixedPhone { get; set; }
+        [EmailAddress(ErrorMessage="电子邮箱格式不正确")]
         [Display(Name = "电子邮箱")]
         public string EmailAddress { get; set; }
         [Display(Name = "地址别名")]

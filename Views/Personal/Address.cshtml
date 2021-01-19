@@ -40,7 +40,11 @@
                 <span asp-validation-for="Consignee" class="text-danger"></span>
         </div>
         <div class="form-group">
-                <label asp-for="Area" class="control-label"></label>
+               <label asp-for="Area"></label>
+               <span id="test" style="cursor:pointer;">选择地址</span>
+               <input asp-for="Area" type="hidden" />
+               <div class="triangle"></div>
+               <div id="neirong"></div>
         </div>
         <div class="form-group">
                 <label asp-for="Address" class="control-label"></label>
@@ -66,11 +70,17 @@
                 <label asp-for="AddressAlias" class="control-label"></label>
                 <input asp-for="AddressAlias" class="control-label"  />
                 <span asp-validation-for="AddressAlias" class="text-danger"></span>
+                <div class="ac-tip">建议填写常用名称：</div>
+						<div class="ac-con">
+							<a href="#" id="home" class="item">家里</a>
+							<a href="#" id="parentHome" class="item">父母家</a>
+							<a href="#" id="company" class="item">公司</a>
+						</div>
         </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Understood</button>
+        <button type="submit" id="Address-btn" class="btn btn-primary">保存收获地址</button>
       </div>
     </div>
   </div>
@@ -78,8 +88,39 @@
 </div>
 </form>
 </body>
-
 @section Scripts {
-    <link rel="stylesheet" href="../../css/address.css">
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <link rel="stylesheet" href="../../css/address.css">
+    <script src="~/js/address-picker.js" asp-append-version="true"></script>
+    <script src="~/js/address.js"></script>
+    <link rel="stylesheet" href="~/css/address-picker.css" />
+    <script>
+        var data = getData();
+        var address_picker;
+        $(document).ready(function () {
+            address_picker = new addressPicker({
+            id: "test",
+            level: 2,
+            data: data,
+            btnConfig: [{
+                text: '清除数据',
+                click: function () {
+                    address_picker.clearSelectedData();
+                    $("#test").text("选择地址");
+                }
+            }]
+        });
+        address_picker.on("click", function (e) {
+            console.log(e);
+            $("#test").text(address_picker.getTotalValueAsText());
+        });
+    });
+     function getData() {
+         //这里也可以用Ajax的方式去加载数据，但是代码顺序可能要调整
+         return @Html.Raw(ViewBag.Data);
+         //人家的示例是写死的
+         //return [{"code":"1","name":"广东省","children":[{"code":"11","name":"深圳市","children":null},{"code":"12","name":"中山市","children":null}]}];
+     }
+      </script>
 } 
+

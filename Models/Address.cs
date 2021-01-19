@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace JdMvc.Models
 {
-    public class Addredd
+    public class Address
     {
         public int Id { get; set; }
         [Display(Name = "用户Id")]
@@ -11,8 +11,8 @@ namespace JdMvc.Models
         public string Consignee { get; set; }
         [Display(Name = "所在地区")]
         public string Area { get; set; }
-        [Display(Name = "地址")]
-        public string Address { get; set; }
+        [Display(Name = "详细地址")]
+        public string DetailedAddress { get; set; }
         [Display(Name = "手机")]
         public string Phone { get; set; }
         [Display(Name = "固定电话")]

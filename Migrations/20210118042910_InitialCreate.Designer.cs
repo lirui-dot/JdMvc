@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace JdMvc.Migrations
 {
     [DbContext(typeof(UserContext))]
-    [Migration("20210113132116_InitialCreate")]
+    [Migration("20210118042910_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,15 +20,12 @@ namespace JdMvc.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.1");
 
-            modelBuilder.Entity("JdMvc.Models.Addredd", b =>
+            modelBuilder.Entity("JdMvc.Models.Address", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AddressAlias")
                         .HasColumnType("nvarchar(max)");
@@ -37,6 +34,9 @@ namespace JdMvc.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Consignee")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DetailedAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")

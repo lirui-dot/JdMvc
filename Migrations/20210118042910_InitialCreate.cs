@@ -15,7 +15,7 @@ namespace JdMvc.Migrations
                     UserId = table.Column<int>(type: "int", nullable: false),
                     Consignee = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Area = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    DetailedAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Phone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     FixedPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
