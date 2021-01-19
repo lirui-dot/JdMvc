@@ -1,136 +1,138 @@
 @model JdMvc.Models.InheritingPage
 
 <body>
-<form asp-action="Address">
-<div id="container">
-    <div id="content">
-        <div id="nav">
-            <div id="menu">
-                <dl>
-                    <dt>设置</dt>
-                    <dd><a href="/Personal/Edit">个人信息</a></dd>
-                    <dd><a href="#">账号安全</a></dd>
-                    <dd><a href="#">我的尺码</a></dd>
-                    <dd><a href="#">账号绑定</a></dd>
-                    <dd><a href="#">收货地址</a></dd>
-                    <dd><a href="#">健康档案</a></dd>
-                    <dd><a href="#">分享绑定</a></dd>
-                    <dd><a href="#">邮件订阅</a></dd>
-                </dl>
-            </div>
-        </div>
-        <div id="main">
-            <div class="tou">
-                <button type="button" id="add-btn" data-toggle="modal"  data-target="#modal-form">新增收货地址</button>
-                <span>您已经创建
-                    <span>@ViewBag.Number</span>
-                    个收获地址,最多可以创建
-                    <span>25</span>
-                    个
-                </span>
-            </div>
-            <div class="zhong">
-                <div class="da">
-                    <div>
+    <form asp-action="Address">
+        <div id="container">
+            <div id="content">
+                <div id="nav">
+                    <div id="menu">
+                        <dl>
+                            <dt>设置</dt>
+                            <dd><a href="/Personal/Edit">个人信息</a></dd>
+                            <dd><a href="#">账号安全</a></dd>
+                            <dd><a href="#">我的尺码</a></dd>
+                            <dd><a href="#">账号绑定</a></dd>
+                            <dd><a href="#">收货地址</a></dd>
+                            <dd><a href="#">健康档案</a></dd>
+                            <dd><a href="#">分享绑定</a></dd>
+                            <dd><a href="#">邮件订阅</a></dd>
+                        </dl>
+                    </div>
+                </div>
+                <div id="main">
+                    <div class="tou">
+                        <button type="button" id="add-btn" data-toggle="modal" data-target="#modal-form">新增收货地址</button>
+                        <span>您已经创建
+                            <span>@ViewBag.Number</span>
+                            个收获地址,最多可以创建
+                            <span>25</span>
+                            个
+                        </span>
+                    </div>
+                    <div class="zhong">
                         @foreach (var item in @ViewBag.Body)
                         {
-                            <div>
-                                <h3>@item.Consignee</h3>
-                            </div>
-                            <div>
-                                <div>
-                                    <div class="form-group">
-                                        <span>收货人：</span>
-                                        <input value="@item.Consignee" readonly="false" />
-                                    </div>
-                                    <div class="form-group">
-                                        <span>所在地区：</span>
-                                        <input value="@item.Area" readonly="false" />
-                                    </div>
-                                    <div class="form-group">
-                                        <span>地址：</span>
-                                        <input value="@item.DetailedAddress" readonly="false" />
-                                    </div>
-                                    <div class="form-group">
-                                        <span>手机：</span>
-                                        <input value="@item.Phone" readonly="false" />
-                                    </div>
-                                    <div class="form-group">
-                                        <span>固定电话：</span>
-                                        <input value="@item.FixedPhone" readonly="false" />
-                                    </div>
-                                    <div class="form-group">
-                                        <span>电子邮箱：</span>
-                                        <input value="@item.EmailAddress" readonly="false" />
+                            <div class="zhong-body">
+                                <div class="zhong-body-1">
+                                    <h5>@item.Consignee</h5>
+                                </div>
+                                <div class="zhong-body-2">
+                                    <div class="zhong-body-2-item">
+                                        <div class="form-group-items">
+                                            <div class="form-group-items-label">
+                                                <span>收货人：</span>
+                                                <div>@item.Consignee</div>
+                                            </div>
+                                            <div class="form-group-items-label">
+                                                <span>所在地区：</span>
+                                                <div>@item.Area</div>
+                                            </div>
+                                            <div class="form-group-items-label">
+                                                <span>地址：</span>
+                                                <div>@item.DetailedAddress</div>
+                                            </div>
+                                            <div class="form-group-items-label">
+                                                <span>手机：</span>
+                                                <div>@item.Phone</div>
+                                            </div>
+                                            <div class="form-group-items-label">
+                                                <span>固定电话：</span>
+                                                <div>@item.FixedPhone</div>
+                                            </div>
+                                            <div class="form-group-items-label">
+                                                <span>电子邮箱：</span>
+                                                <div>@item.EmailAddress</div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         }
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1"
+                role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">添加收获地址</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label asp-for="Consignee" class="control-label"></label>
+                                <input asp-for="Consignee" class="control-label" />
+                                <span asp-validation-for="Consignee" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Area"></label>
+                                <span id="test" style="cursor:pointer;">选择地址</span>
+                                <input asp-for="Area" type="hidden" />
+                                <div class="triangle"></div>
+                                <div class="neirong" id="nei"></div>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DetailedAddress" class="control-label"></label>
+                                <input asp-for="DetailedAddress" class="control-label" />
+                                <span asp-validation-for="DetailedAddress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Phone" class="control-label"></label>
+                                <input asp-for="Phone" class="control-label" />
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FixedPhone" class="control-label"></label>
+                                <input asp-for="FixedPhone" class="control-label" />
+                                <span asp-validation-for="FixedPhone" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="EmailAddress" class="control-label"></label>
+                                <input asp-for="EmailAddress" class="control-label" />
+                                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="AddressAlias" class="control-label"></label>
+                                <input asp-for="AddressAlias" class="control-label" />
+                                <span asp-validation-for="AddressAlias" class="text-danger"></span>
+                                <div class="ac-tip">建议填写常用名称：</div>
+                                <div class="ac-con">
+                                    <a href="#" id="home" class="item">家里</a>
+                                    <a href="#" id="parentHome" class="item">父母家</a>
+                                    <a href="#" id="company" class="item">公司</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="Address-btn" class="btn btn-primary">保存收获地址</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-<div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">添加收获地址</h5>
-      </div>
-      <div class="modal-body">
-        <div class="form-group">
-                <label asp-for="Consignee" class="control-label"></label>
-                <input asp-for="Consignee" class="control-label"  />
-                <span asp-validation-for="Consignee" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-               <label asp-for="Area"></label>
-               <span id="test" style="cursor:pointer;">选择地址</span>
-               <input asp-for="Area" type="hidden" />
-               <div class="triangle"></div>
-               <div class="neirong" id="nei"></div>
-        </div>
-        <div class="form-group">
-                <label asp-for="DetailedAddress" class="control-label"></label>
-                <input asp-for="DetailedAddress" class="control-label"  />
-                <span asp-validation-for="DetailedAddress" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-                <label asp-for="Phone" class="control-label"></label>
-                <input asp-for="Phone" class="control-label"  />
-                <span asp-validation-for="Phone" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-                <label asp-for="FixedPhone" class="control-label"></label>
-                <input asp-for="FixedPhone" class="control-label"  />
-                <span asp-validation-for="FixedPhone" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-                <label asp-for="EmailAddress" class="control-label"></label>
-                <input asp-for="EmailAddress" class="control-label"  />
-                <span asp-validation-for="EmailAddress" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-                <label asp-for="AddressAlias" class="control-label"></label>
-                <input asp-for="AddressAlias" class="control-label"  />
-                <span asp-validation-for="AddressAlias" class="text-danger"></span>
-                <div class="ac-tip">建议填写常用名称：</div>
-						<div class="ac-con">
-							<a href="#" id="home" class="item">家里</a>
-							<a href="#" id="parentHome" class="item">父母家</a>
-							<a href="#" id="company" class="item">公司</a>
-						</div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" id="Address-btn" class="btn btn-primary">保存收获地址</button>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</form>
+    </form>
 </body>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }

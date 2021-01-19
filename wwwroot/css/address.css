@@ -4,15 +4,45 @@ body{
    -webkit-font-smoothing: antialiased;
    background: #fff;
 }
+.neirong{
+    position: relative;
+    right: 740px;
+    bottom: 170px;
+    display: none;
+}
+.label-xuan{
+    position: relative;
+    right: 740px;
+    bottom: 170px;
+}
+#container{
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+#content{
+    padding-left: 120px;
+    padding-top: 20px;
+    display: inline-block;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
 #nav{
     float: left;
-    width: 80px;
+    width: 120px;
+    position: relative;
+    left: -120px;
     margin: 0;
-    padding: 0; 
+    padding: 0;
 }
-#tou{
-    padding: 10px 0;
-    display: block;
+#main{
+    float: left;
+    width: 99.9%;
+    margin-left: -120px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
 #add-btn{
     color: #333;
@@ -25,17 +55,14 @@ body{
     line-height: 28px;
     font-size: 14px;
     margin: 0 10px 0 0;
-    background-color: #f5fbef;
-    border: 1px solid #bfd6af;
+    margin: 0;
+    padding: 0;
 }
-.neirong{
-    position: relative;
-    right: 740px;
-    bottom: 170px;
-    display: none;
-}
-.label-xuan{
-    position: relative;
-    right: 740px;
-    bottom: 170px;
+.zhong{
+    line-height: 20px;
+    overflow: visible;
+    overflow: hidden;
+    zoom: 1;
+    margin: 0;
+    padding: 0;
 }
