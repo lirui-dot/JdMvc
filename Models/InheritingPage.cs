@@ -66,7 +66,6 @@ namespace JdMvc.Models
         [Required(ErrorMessage = "请输入收货人名称")]
         [Display(Name = "*收货人")]
         public string Consignee { get; set; }
-        [Required(ErrorMessage = "所在地区不能为空")]
         [Display(Name = "*所在地区")]
         public string Area { get; set; }
         [Required(ErrorMessage = "地址不能为空")]

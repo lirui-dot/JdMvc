@@ -1,10 +1,11 @@
-body{
-    font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
-   color: #666;
-   -webkit-font-smoothing: antialiased;
-   background: #fff;
+body {
+    font: 12px/150% tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+    color: #666;
+    -webkit-font-smoothing: antialiased;
+    background: #fff;
 }
-.neirong{
+
+.neirong {
     position: relative;
     right: 740px;
     bottom: 170px;
@@ -12,19 +13,22 @@ body{
     margin: 0;
     padding: 0;
 }
-.label-xuan{
+
+.label-xuan {
     position: relative;
     right: 740px;
     bottom: 170px;
     margin: 0;
     padding: 0;
 }
-#container{
+
+#container {
     background-color: #f5f5f5;
     margin: 0;
     padding: 0;
 }
-#content{
+
+#content {
     padding-left: 120px;
     padding-top: 20px;
     display: inline-block;
@@ -32,17 +36,20 @@ body{
     margin: 0;
     padding: 0;
 }
-#nav{
+
+#nav {
     float: left;
     position: relative;
     left: -70px;
     margin: 0;
     padding: 0;
 }
-#main{
+
+#main {
     float: left;
 }
-#add-btn{
+
+#add-btn {
     color: #333;
     text-decoration: none;
     display: inline-block;
@@ -56,22 +63,26 @@ body{
     margin: 0;
     padding: 0;
 }
-.zhong{
+
+.zhong {
     line-height: 20px;
     margin: 0;
     padding: 0;
 }
-div{
+
+div {
     display: block;
 }
-.zhong-body{
+
+.zhong-body {
     border: 2px solid #e6e6e6;
     margin: 0 0 10px;
     padding: 0;
     line-height: 20px;
     height: 180px;
 }
-.zhong-body-1{
+
+.zhong-body-1 {
     padding-left: 10px;
     line-height: 35px;
     height: 20px;
@@ -80,9 +91,9 @@ div{
     display: block;
     overflow: visible;
     margin: 0;
-    
 }
-.zhong-body-1 h3{
+
+.zhong-body-1 h3 {
     float: left;
     color: #666;
     font-family: "microsoft yahei";
@@ -90,34 +101,55 @@ div{
     padding: 0;
     display: block;
     font-size: 1.17em;
-    
     margin-block-end: 1em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     font-weight: bold;
     line-height: 35px;
 }
-.zhong-body-2{
+
+.zhong-body-2 {
     padding: 10px;
     line-height: 22px;
     width: 788px;
+    height: 180px;
 }
-.form-group-items{
+
+.form-group-items {
     width: 450px;
     float: left;
     margin: 0;
     padding: 0;
     line-height: 22px;
 }
-.form-group-items-label{
+
+.form-group-items-label {
     height: 25px;
 }
-.fl{
+
+.fl {
     position: relative;
     left: 60px;
     bottom: 22px;
 }
-.close{
+
+.close {
     position: relative;
-    bottom: 40px;
+    bottom: 200px;
+}
+
+.zhong-body-2-item-extra {
+    position: relative;
+    left: 170px;
+    top: 121px;
+}
+
+.modal-edit-btn {
+    margin: 0px;
+    padding: 0px;
+    /*自定义边框*/
+    border: 0px;
+    background-color: rgb(255, 255, 255);
+    /*消除默认点击蓝色边框效果*/
+    outline: none;
 }

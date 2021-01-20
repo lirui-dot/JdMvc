@@ -21,6 +21,9 @@ namespace JdMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddControllersWithViews();
+            services.AddDbContext<UserContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("UserContext")));
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
@@ -28,9 +31,7 @@ namespace JdMvc
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
-            services.AddControllersWithViews();
-            services.AddDbContext<UserContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("UserContext")));
+
 
         }
 

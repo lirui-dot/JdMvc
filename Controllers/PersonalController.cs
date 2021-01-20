@@ -25,10 +25,11 @@ namespace JdMvc.Controllers
         // GET: Personal/Edit/5
         public async Task<IActionResult> Edit()
         {
+            
             var userid = HttpContext.Session.GetInt32("UserId");
             var sessionId=HttpContext.Session.Id;
             ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
-
+            
             InheritingPage page = new InheritingPage();
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
             var user = _context.Users.Find(userid);
@@ -335,8 +336,8 @@ namespace JdMvc.Controllers
             var userid = HttpContext.Session.GetInt32("UserId");
             var sessionId=HttpContext.Session.Id;
             ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
-            
-            var user = _context.Users.Find(1);
+
+            var user = _context.Users.Find(userid);
             Address address = new Address();
             address.UserId = user.Id;
             address.Consignee = page.Consignee;
@@ -369,6 +370,25 @@ namespace JdMvc.Controllers
             var address=_context.Addresses.Find(id);
             _context.Addresses.Remove(address);
             await _context.SaveChangesAsync();
+            return RedirectToAction("Address", "Personal");
+        }
+        public async Task<ActionResult> AddressEdit(int? id)
+        {
+            var address=_context.Addresses.Find(id);
+            InheritingPage page=new InheritingPage();
+            page.Consignee=address.Consignee;
+            page.Area=address.Area;
+            page.DetailedAddress=address.DetailedAddress;
+            page.Phone=address.Phone;
+            page.FixedPhone=address.FixedPhone;
+            page.EmailAddress=address.EmailAddress;
+            page.AddressAlias=address.AddressAlias;
+
+            return RedirectToAction("AddressEdit", "Personal");
+        }
+        [HttpPost]
+        public async Task<ActionResult> AddressEdit(InheritingPage page,int id)
+        {
             return RedirectToAction("Address", "Personal");
         }
     }
