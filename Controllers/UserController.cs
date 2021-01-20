@@ -45,19 +45,10 @@ namespace JdMvc.Controllers
                     response.EnsureSuccessStatusCode();
                     Console.WriteLine(await response.Content.ReadAsStringAsync());
                     string json = await response.Content.ReadAsStringAsync();
-                    // string o=i.Replace("\"","\'");
-                    // string p=o.Replace("'name':'','areacode':'010','zipcode':'100000','depth':1},{'id':2,'name':'安徽','parentid':0,'parentname':'','areacode':null,'zipcode':'','depth':1}";status':0,'msg':'ok','result':[{","");
-                    // string a=p.Replace("]}","");
-                    // string json = @"{'id':1,'name':'北京','parentid':0,'parent
-
-                    // ProvinceDetails pr = JsonConvert.DeserializeObject<ProvinceDetails>(json);//反序列化
-
-                    // CityDetails city = JsonConvert.DeserializeObject<CityDetails>(json);//反序列化
-                    ProvinceDetails province = JsonConvert.DeserializeObject<ProvinceDetails>(json);//反序列化
-                                                                                                    // Console.WriteLine(string.Format("反序列化： id={0},name={1},parentid={2},parentname={3},areacode={4},zipcode={5},depth={6}"
-                                                                                                    // , descJsonStu.id, descJsonStu.name, descJsonStu.parentid, descJsonStu.parentname,descJsonStu.areacode,descJsonStu.zipcode,descJsonStu.depth));
+                    
+                    ProvinceDetails province = JsonConvert.DeserializeObject<ProvinceDetails>(json);
                     string shuju = "";
-                    string path = "D:/z.txt";
+                    string path = "D:/省份.txt";
                     FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write);
                     for (int i = 0; i < province.result.Count; i++)
                     {
@@ -74,7 +65,7 @@ namespace JdMvc.Controllers
             if (c == null)
             {
                 string ooo = "";
-                string path = "D:/qq.txt";
+                string path = "D:/城市.txt";
                 FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write);
                 for (int w = 1; w < 35; w++)
                 {

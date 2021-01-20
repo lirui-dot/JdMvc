@@ -1,5 +1,6 @@
 @model JdMvc.Models.InheritingPage
 
+<div>@ViewBag.SessionInfo</div>
 <body>
     <form asp-action="Address">
         <div id="container">
@@ -32,43 +33,54 @@
                     <div class="zhong">
                         @foreach (var item in @ViewBag.Body)
                         {
+                            <input value="@item.Id" type="hidden" id="AddressId" />
                             <div class="zhong-body">
                                 <div class="zhong-body-1">
-                                    <h5>@item.Consignee</h5>
+                                    <h3>@item.Consignee</h3>
                                 </div>
                                 <div class="zhong-body-2">
                                     <div class="zhong-body-2-item">
                                         <div class="form-group-items">
                                             <div class="form-group-items-label">
                                                 <span>收货人：</span>
-                                                <div>@item.Consignee</div>
+                                                <div class="fl">@item.Consignee</div>
                                             </div>
                                             <div class="form-group-items-label">
                                                 <span>所在地区：</span>
-                                                <div>@item.Area</div>
+                                                <div class="fl">@item.Area</div>
                                             </div>
                                             <div class="form-group-items-label">
                                                 <span>地址：</span>
-                                                <div>@item.DetailedAddress</div>
+                                                <div class="fl">@item.DetailedAddress</div>
                                             </div>
                                             <div class="form-group-items-label">
                                                 <span>手机：</span>
-                                                <div>@item.Phone</div>
+                                                <div class="fl">@item.Phone</div>
                                             </div>
                                             <div class="form-group-items-label">
                                                 <span>固定电话：</span>
-                                                <div>@item.FixedPhone</div>
+                                                <div class="fl">@item.FixedPhone</div>
                                             </div>
                                             <div class="form-group-items-label">
                                                 <span>电子邮箱：</span>
-                                                <div>@item.EmailAddress</div>
+                                                <div class="fl">@item.EmailAddress</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <a asp-action="AddressDelect" asp-route-id="@item.Id"><button type="button" class="close" aria-label="Close" ><span aria-hidden="true">&times;</span></button></a>
+
                             </div>
                         }
-                        
+                    </div>
+                    <div class="tou">
+                        <button type="button" id="add-btn" data-toggle="modal" data-target="#modal-form">新增收货地址</button>
+                        <span>您已经创建
+                            <span>@ViewBag.Number</span>
+                            个收获地址,最多可以创建
+                            <span>25</span>
+                            个
+                        </span>
                     </div>
                 </div>
             </div>

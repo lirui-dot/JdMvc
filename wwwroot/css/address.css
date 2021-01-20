@@ -9,11 +9,15 @@ body{
     right: 740px;
     bottom: 170px;
     display: none;
+    margin: 0;
+    padding: 0;
 }
 .label-xuan{
     position: relative;
     right: 740px;
     bottom: 170px;
+    margin: 0;
+    padding: 0;
 }
 #container{
     background-color: #f5f5f5;
@@ -30,19 +34,13 @@ body{
 }
 #nav{
     float: left;
-    width: 120px;
     position: relative;
-    left: -120px;
+    left: -70px;
     margin: 0;
     padding: 0;
 }
 #main{
     float: left;
-    width: 99.9%;
-    margin-left: -120px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
 }
 #add-btn{
     color: #333;
@@ -60,9 +58,66 @@ body{
 }
 .zhong{
     line-height: 20px;
-    overflow: visible;
-    overflow: hidden;
-    zoom: 1;
     margin: 0;
     padding: 0;
+}
+div{
+    display: block;
+}
+.zhong-body{
+    border: 2px solid #e6e6e6;
+    margin: 0 0 10px;
+    padding: 0;
+    line-height: 20px;
+    height: 180px;
+}
+.zhong-body-1{
+    padding-left: 10px;
+    line-height: 35px;
+    height: 20px;
+    position: relative;
+    display: inline-block;
+    display: block;
+    overflow: visible;
+    margin: 0;
+    
+}
+.zhong-body-1 h3{
+    float: left;
+    color: #666;
+    font-family: "microsoft yahei";
+    margin: 0;
+    padding: 0;
+    display: block;
+    font-size: 1.17em;
+    
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    line-height: 35px;
+}
+.zhong-body-2{
+    padding: 10px;
+    line-height: 22px;
+    width: 788px;
+}
+.form-group-items{
+    width: 450px;
+    float: left;
+    margin: 0;
+    padding: 0;
+    line-height: 22px;
+}
+.form-group-items-label{
+    height: 25px;
+}
+.fl{
+    position: relative;
+    left: 60px;
+    bottom: 22px;
+}
+.close{
+    position: relative;
+    bottom: 40px;
 }
