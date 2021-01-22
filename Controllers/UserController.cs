@@ -34,7 +34,10 @@ namespace JdMvc.Controllers
             var p = await _context.Provinces.FindAsync(1);
             if (p == null)
             {
+                string shuju = "";
+                string path = "D:/省份.txt";
                 string url = "https://api.jisuapi.com/area/province?appkey=f48e75474d78a4d6";
+                FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write);
                 var handler = new HttpClientHandler()
                 {
                     AutomaticDecompression = DecompressionMethods.GZip
@@ -45,11 +48,8 @@ namespace JdMvc.Controllers
                     response.EnsureSuccessStatusCode();
                     Console.WriteLine(await response.Content.ReadAsStringAsync());
                     string json = await response.Content.ReadAsStringAsync();
-                    
+
                     ProvinceDetails province = JsonConvert.DeserializeObject<ProvinceDetails>(json);
-                    string shuju = "";
-                    string path = "D:/省份.txt";
-                    FileStream fileStream = new FileStream(path, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.Write);
                     for (int i = 0; i < province.result.Count; i++)
                     {
                         string sql = "insert into [Provinces] (name,parentid)values('" + province.result[i].name + "'," + province.result[i].parentid + ");";
