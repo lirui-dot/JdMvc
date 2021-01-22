@@ -25,11 +25,11 @@ namespace JdMvc.Controllers
         // GET: Personal/Edit/5
         public async Task<IActionResult> Edit()
         {
-            
+
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
-            
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
+
             InheritingPage page = new InheritingPage();
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
             var user = _context.Users.Find(userid);
@@ -115,8 +115,8 @@ namespace JdMvc.Controllers
         public async Task<IActionResult> Edit(InheritingPage page)
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
 
             var personal = _context.Personals.SingleOrDefault(m => m.UserId == userid);
 
@@ -173,10 +173,10 @@ namespace JdMvc.Controllers
 
         public async Task<ActionResult> Pictures()
         {
-            
+
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
             var ig = _context.Images.Find(1);
             if (ig == null)
             {
@@ -240,8 +240,8 @@ namespace JdMvc.Controllers
             ViewData["Image"] = imgage;
 
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
             var ps = _context.Personals.Single(m => m.UserId == userid);
             if (page.ImageUrl != null)
             {
@@ -280,8 +280,8 @@ namespace JdMvc.Controllers
         public async Task<ActionResult> Informations()
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
             var ps = _context.Personals.SingleOrDefault(m => m.UserId == userid);
             InheritingPage inheriting = new InheritingPage();
             inheriting.Marriage = ps.Marriage;
@@ -295,8 +295,8 @@ namespace JdMvc.Controllers
         public async Task<ActionResult> Informations(InheritingPage page)
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
             var ps = _context.Personals.Single(m => m.UserId == userid);
             ps.Marriage = page.Marriage;
             ps.Income = page.Income;
@@ -315,8 +315,8 @@ namespace JdMvc.Controllers
         public async Task<ActionResult> Address()
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
             var dbProvince = await _context.Provinces.Where(m => m.id < 35).ToListAsync();
             for (int i = 0; i < dbProvince.Count; i++)
             {
@@ -331,11 +331,11 @@ namespace JdMvc.Controllers
 
         }
         [HttpPost]
-        public async Task<ActionResult> Address(InheritingPage page)
+        public async Task<ActionResult> Address([FromBody]InheritingPage page)
         {
             var userid = HttpContext.Session.GetInt32("UserId");
-            var sessionId=HttpContext.Session.Id;
-            ViewBag.SessionInfo=$"Session is{sessionId}.User id is:{userid}";
+            var sessionId = HttpContext.Session.Id;
+            ViewBag.SessionInfo = $"Session is{sessionId}.User id is:{userid}";
 
             var user = _context.Users.Find(userid);
             Address address = new Address();
@@ -351,13 +351,13 @@ namespace JdMvc.Controllers
             {
                 _context.Addresses.Add(address);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Address", "Personal");
+                return Json(address);
             }
             return View(page);
         }
         public async Task<ActionResult> AddressDelect(int? id)
         {
-            var address=_context.Addresses.Find(id);
+            var address = _context.Addresses.Find(id);
             _context.Addresses.Remove(address);
             await _context.SaveChangesAsync();
             return RedirectToAction("Address", "Personal");
@@ -365,22 +365,35 @@ namespace JdMvc.Controllers
 
         public async Task<ActionResult> AddressEdit(int? id)
         {
-            var address=_context.Addresses.Find(id); 
-            InheritingPage page=new InheritingPage();
-            page.Consignee=address.Consignee;
-            page.Area=address.Area;
-            page.DetailedAddress=address.DetailedAddress;
-            page.Phone=address.Phone;
-            page.FixedPhone=address.FixedPhone;
-            page.EmailAddress=address.EmailAddress;
-            page.AddressAlias=address.AddressAlias;
+            var address = _context.Addresses.Find(id);
+            InheritingPage page = new InheritingPage();
+            page.Consignee = address.Consignee;
+            page.Area = address.Area;
+            page.DetailedAddress = address.DetailedAddress;
+            page.Phone = address.Phone;
+            page.FixedPhone = address.FixedPhone;
+            page.EmailAddress = address.EmailAddress;
+            page.AddressAlias = address.AddressAlias;
 
             return Json(page);
         }
         [HttpPost]
-        public async Task<ActionResult> AddressEdit(InheritingPage page,int id)
+        public async Task<ActionResult> AddressEdit([FromBody]InheritingPage page)
         {
-            return RedirectToAction("Address", "Personal");
+            var address=_context.Addresses.Find(page.Id);
+            address.Consignee=page.Consignee;
+            address.Area=page.Area;
+            address.DetailedAddress=page.DetailedAddress;
+            address.Phone=page.Phone;
+            address.FixedPhone=page.FixedPhone;
+            address.EmailAddress=page.EmailAddress;
+            address.AddressAlias=page.AddressAlias;
+            if(address!=null){
+                _context.Update(address);
+                await _context.SaveChangesAsync();
+                return Json(address);
+            }
+            return View(page);
         }
     }
 }
