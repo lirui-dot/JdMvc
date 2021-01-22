@@ -27,8 +27,7 @@ namespace JdMvc.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Index(User user)
+        public async Task<IActionResult> Index([FromBody]User user)
         {
 
             var p = await _context.Provinces.FindAsync(1);
@@ -99,14 +98,17 @@ namespace JdMvc.Controllers
             if (!ModelState.IsValid)
             {
                 var dbuser = _context.Users.FirstOrDefault(m => m.LoginName.Equals(user.UserName) && m.PassWord.Equals(user.PassWord));
-                HttpContext.Session.SetInt32("UserId", dbuser.Id);
 
                 if (dbuser != null)
                 {
-                    return RedirectToAction("Edit", "Personal");
+                    HttpContext.Session.SetInt32("UserId", dbuser.Id);
+                    return Json(dbuser);
                 }
                 else
-                    return View();
+                {
+                    return Json(dbuser);
+                }
+
             }
 
 
