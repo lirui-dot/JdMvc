@@ -52,6 +52,7 @@ namespace JdMvc
             app.UseStaticFiles();
 
             app.UseRouting();
+            app.UseDefaultFiles();
 
             app.UseAuthorization();
 

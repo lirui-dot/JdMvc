@@ -1,6 +1,7 @@
 @model JdMvc.Models.InheritingPage
 
 <div>@ViewBag.SessionInfo</div>
+
 <div id="container">
     <div id="content">
         <div id="nav">
@@ -34,6 +35,7 @@
                     <div class="zhong-body">
                         <div class="zhong-body-1">
                             <h3>@item.Consignee</h3>
+                            <span class="zhong-body-1-address" id="@item.Id">默认地址</span>
                         </div>
                         <div class="zhong-body-2">
                             <div class="zhong-body-2-item">
@@ -64,8 +66,9 @@
                                     </div>
                                 </div>
                                 <div class="zhong-body-2-item-extra">
-                                    <a href="">设为默认</a>
-                                    <a asp-action="AddressEdit" asp-route-id="@item.Id"><button class="modal-edit-btn" data-toggle="modal" data-target="#modal-edit">编辑</button></a>
+                                    <a href="#" class="extra-moren" data-qqqqqqq="@item.Id">设为默认</a>
+                                    <button data-aaaaaa="@item.Id" class="modal-edit-btn" type="submit" data-toggle="modal"
+                                        data-target="#modal-form">编辑</button>
                                 </div>
                             </div>
                         </div>
@@ -87,66 +90,7 @@
         </div>
     </div>
 </div>
-<form asp-action="AddressEdit">
-    <div class="modal fade" id="modal-edit" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">编辑收获地址</h5>
-                </div>
-                <div class="modal-body">
-                    <div class="form-group">
-                        <label asp-for="Consignee"></label>
-                        <input asp-for="Consignee" />
-                        <span asp-validation-for="Consignee" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Area"></label>
-                        <span id="test" style="cursor:pointer;">选择地址</span>
-                        <input asp-for="Area" type="hidden" />
-                        <div class="triangle"></div>
-                        <div class="neirong" id="nei"></div>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="DetailedAddress"></label>
-                        <input asp-for="DetailedAddress" />
-                        <span asp-validation-for="DetailedAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="Phone"></label>
-                        <input asp-for="Phone" />
-                        <span asp-validation-for="Phone" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="FixedPhone"></label>
-                        <input asp-for="FixedPhone" />
-                        <span asp-validation-for="FixedPhone" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="EmailAddress"></label>
-                        <input asp-for="EmailAddress" />
-                        <span asp-validation-for="EmailAddress" class="text-danger"></span>
-                    </div>
-                    <div class="form-group">
-                        <label asp-for="AddressAlias"></label>
-                        <input asp-for="AddressAlias" />
-                        <span asp-validation-for="AddressAlias" class="text-danger"></span>
-                        <div class="ac-tip">建议填写常用名称：</div>
-                        <div class="ac-con">
-                            <a href="#" id="home" class="item">家里</a>
-                            <a href="#" id="parentHome" class="item">父母家</a>
-                            <a href="#" id="company" class="item">公司</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="Address-btn" class="btn btn-primary">保存收获地址</button>
-                </div>
-            </div>
-        </div>
-</form>
+
 <form asp-action="Address">
     <div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -210,11 +154,13 @@
 </div>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+    <link rel="stylesheet" href="~/css/address-picker.css" />
     <link rel="stylesheet" href="../../css/address.css">
     <script src="~/js/address-picker.js" asp-append-version="true"></script>
     <script src="~/js/address.js"></script>
-    <link rel="stylesheet" href="~/css/address-picker.css" />
+    
     <script>
+
         var data = getData();
         var address_picker;
         $(document).ready(function () {

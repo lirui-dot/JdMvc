@@ -363,18 +363,9 @@ namespace JdMvc.Controllers
             return RedirectToAction("Address", "Personal");
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> AddressDelect(int id)
-        {
-            var address=_context.Addresses.Find(id);
-            _context.Addresses.Remove(address);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Address", "Personal");
-        }
         public async Task<ActionResult> AddressEdit(int? id)
         {
-            var address=_context.Addresses.Find(id);
+            var address=_context.Addresses.Find(id); 
             InheritingPage page=new InheritingPage();
             page.Consignee=address.Consignee;
             page.Area=address.Area;
@@ -384,7 +375,7 @@ namespace JdMvc.Controllers
             page.EmailAddress=address.EmailAddress;
             page.AddressAlias=address.AddressAlias;
 
-            return RedirectToAction("AddressEdit", "Personal");
+            return Json(page);
         }
         [HttpPost]
         public async Task<ActionResult> AddressEdit(InheritingPage page,int id)
