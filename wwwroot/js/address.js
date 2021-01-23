@@ -78,22 +78,28 @@ $(function () {
             var detailedAddress = $('#DetailedAddress').val();
             var phone = $('#Phone').val();
             if (phone == "") {
-                alert("手机号码不能为空");
                 return;
             }
-            if (phone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
-                alert("手机号码格式不正确");
-                return
+            if (!phone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+                alert("输入的电话格式不正确，请重新输入");
+                return;
             }
             var fixedPhone = $('#FixedPhone').val();
-            if (fixePhone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
-                alert("手机号码格式不正确");
-                return
+            if(fixedPhone!=""){
+                if (!fixePhone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+                    alert("输入的电话格式不正确，请重新输入");
+                    return;
+                }
             }
+           
             var emailAddress = $('#EmailAddress').val();
-            if (!emailAddress.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
-                alert("邮箱格式不正确");
+            if(emailAddress!=""){
+                if (!emailAddress.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+                    alert("您的邮编格式不正确请重新输入");
+                    return
+                }
             }
+           
             var addressAlias = $('#AddressAlias').val();
             var page = {
                 Consignee: consignee,
