@@ -5,41 +5,8 @@ $(function () {
         $('#Area').val(test);
     })
     //点击close刷新页面
-    $('#close-btn').click(function(){
-        window.location.href="https://localhost:5001/Personal/Address";
-    })
-    //异步新增一个地址
-    $('#add-btn').click(function () {
-        $('#Address-btn').click(function () {
-            var consignee = $('#Consignee').val();
-            var test = $('#test').text();
-            var detailedAddress = $('#DetailedAddress').val();
-            var phone = $('#Phone').val();
-            var fixedPhone = $('#FixedPhone').val();
-            var emailAddress = $('#EmailAddress').val();
-            var addressAlias = $('#AddressAlias').val();
-            var page = {
-                Consignee: consignee,
-                Area: test,
-                DetailedAddress: detailedAddress,
-                Phone: phone,
-                FixedPhone: fixedPhone,
-                EmailAddress: emailAddress,
-                AddressAlias: addressAlias
-            };
-
-            $.ajax({
-                url: 'https://localhost:5001/Personal/Address',
-                type: "POST",
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify(page),
-                success: function () {
-                    alert("添加成功");
-                    window.location.href="https://localhost:5001/Personal/Address";
-                }
-            })
-        })
+    $('#close-btn').click(function () {
+        window.location.href = "https://localhost:5001/Personal/Address";
     })
 });
 //把省份div移到class=neirong
@@ -72,6 +39,14 @@ $(function () {
     })
 })
 $(function () {
+    //异步新增一个地址
+    $('#add-btn').click(function () {
+        $('#Address-btn').click(function () {
+            $('#form-Address').submit();
+        })
+    })
+})
+$(function () {
     //异步获取数据
     $('.modal-edit-btn').click(function () {
         var id = $(this).data("aaaaaa");
@@ -93,18 +68,32 @@ $(function () {
         })
     })
 })
+//异步修改数据
 $(function () {
     $('#address-edit').click(function () {
-        // $("#Address-btn").css('display', 'none');
-        // $("#Address-btn-edit").css('display', 'inline');
         var id = $(this).data("aaaaaa");
         $('#Address-btn').click(function () {
             var consignee = $('#Consignee').val();
             var test = $('#test').text();
             var detailedAddress = $('#DetailedAddress').val();
             var phone = $('#Phone').val();
+            if (phone == "") {
+                alert("手机号码不能为空");
+                return;
+            }
+            if (phone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+                alert("手机号码格式不正确");
+                return
+            }
             var fixedPhone = $('#FixedPhone').val();
+            if (fixePhone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+                alert("手机号码格式不正确");
+                return
+            }
             var emailAddress = $('#EmailAddress').val();
+            if (!emailAddress.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+                alert("邮箱格式不正确");
+            }
             var addressAlias = $('#AddressAlias').val();
             var page = {
                 Consignee: consignee,
@@ -125,7 +114,7 @@ $(function () {
                 data: JSON.stringify(page),
                 success: function () {
                     alert("修改成功");
-                    window.location.href="https://localhost:5001/Personal/Address";
+                    window.location.href = "https://localhost:5001/Personal/Address";
                 }
             })
         })

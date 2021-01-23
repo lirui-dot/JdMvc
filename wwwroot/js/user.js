@@ -5,7 +5,7 @@ $(function () {
         if (username == "") {
             alert("用户名不能为空");
             return;
-        }
+        } 
         if (pwd == "") {
             alert("密码不能为空");
             return;

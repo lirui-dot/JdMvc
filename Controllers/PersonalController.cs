@@ -331,7 +331,7 @@ namespace JdMvc.Controllers
 
         }
         [HttpPost]
-        public async Task<ActionResult> Address([FromBody]InheritingPage page)
+        public async Task<ActionResult> Address(InheritingPage page)
         {
             var userid = HttpContext.Session.GetInt32("UserId");
             var sessionId = HttpContext.Session.Id;
@@ -351,7 +351,7 @@ namespace JdMvc.Controllers
             {
                 _context.Addresses.Add(address);
                 await _context.SaveChangesAsync();
-                return Json(address);
+                return RedirectToAction("Address", "Personal");
             }
             return View(page);
         }

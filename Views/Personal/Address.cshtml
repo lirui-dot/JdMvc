@@ -89,6 +89,8 @@
         </div>
     </div>
 </div>
+<form asp-action="AddressEdit" id="form-AddressEdit"></form>
+<form asp-action="Address" id="form-Address">
 <div class="modal fade" id="modal-form" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -149,6 +151,7 @@
         </div>
     </div>
 </div>
+</form>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
