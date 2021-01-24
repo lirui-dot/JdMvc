@@ -1,8 +1,10 @@
 $(function () {
     //点击保存地址把省份的值赋给test
-    $('#Address-btn').click(function () {
-        var test = $('#test').text();
-        $('#Area').val(test);
+    $('#add-btn').click(function () {
+        $('#Address-btn').click(function () {
+            var test = $('#test').text();
+            $('#Area').val(test);
+        })
     })
     //点击close刷新页面
     $('#close-btn').click(function () {
@@ -48,30 +50,31 @@ $(function () {
 })
 $(function () {
     //异步获取数据
-    $('.modal-edit-btn').click(function () {
+    $('.modal-edit-btn').mouseenter(function () {
         var id = $(this).data("aaaaaa");
-        $.ajax({
-            url: 'https://localhost:5001/Personal/AddressEdit' + '?id=' + id,
-            type: "GET",
-            dataType: 'json',
-            contentType: 'application/json',
-            success: function (item) {
-                console.log(item);
-                $('#Consignee').val(item.consignee);
-                $('#test').text(item.area);
-                $('#DetailedAddress').val(item.detailedAddress);
-                $('#Phone').val(item.phone);
-                $('#FixedPhone').val(item.fixedPhone);
-                $('#EmailAddress').val(item.emailAddress);
-                $('#AddressAlias').val(item.addressAlias);
-            }
+        var cs = "edit" + id;
+        var i="#edit"+id;
+        $(this).attr('id',cs);//之后变成：<div id="newQipa250"></div>
+        $(i).click(function(){
+            $.ajax({
+                url: 'https://localhost:5001/Personal/AddressEdit' + '?id=' + id,
+                type: "GET",
+                dataType: 'json',
+                contentType: 'application/json',
+                success: function (item) {
+                    console.log(item);
+                    $('#Consignee').val(item.consignee);
+                    $('#test').text(item.area);
+                    $('#DetailedAddress').val(item.detailedAddress);
+                    $('#Phone').val(item.phone);
+                    $('#FixedPhone').val(item.fixedPhone);
+                    $('#EmailAddress').val(item.emailAddress);
+                    $('#AddressAlias').val(item.addressAlias);
+                }
+            })
         })
-    })
-})
-//异步修改数据
-$(function () {
-    $('#address-edit').click(function () {
-        var id = $(this).data("aaaaaa");
+       
+         //异步修改数据
         $('#Address-btn').click(function () {
             var consignee = $('#Consignee').val();
             var test = $('#test').text();
@@ -85,21 +88,21 @@ $(function () {
                 return;
             }
             var fixedPhone = $('#FixedPhone').val();
-            if(fixedPhone!=""){
-                if (!fixePhone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
+            if (fixedPhone != "") {
+                if (!fixedPhone.match(/^(((13[0-9]{1})|159|153)+\d{8})$/)) {
                     alert("输入的电话格式不正确，请重新输入");
                     return;
                 }
             }
-           
+
             var emailAddress = $('#EmailAddress').val();
-            if(emailAddress!=""){
+            if (emailAddress != "") {
                 if (!emailAddress.match(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
                     alert("您的邮编格式不正确请重新输入");
                     return
                 }
             }
-           
+
             var addressAlias = $('#AddressAlias').val();
             var page = {
                 Consignee: consignee,
@@ -124,8 +127,17 @@ $(function () {
                 }
             })
         })
+       
+        // $(function () {
+        //     $('.modal-edit-btn').click(function () {
+        //         var id = $(this).data("aaaaaa");
+              
+        //     })
+        // })
     })
 })
+
+
 
 
 
